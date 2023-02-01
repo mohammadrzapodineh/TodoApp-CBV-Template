@@ -1,3 +1,12 @@
 from django.shortcuts import render
+from django.contrib.auth.views import LoginView
+from .forms import UserAuthenticationForm
 
-# Create your views here.
+
+class UserLoginView(LoginView):
+    '''
+    Login Users With A Custom Authentication Form
+    '''
+    template_name = 'accounts/login_page.html'
+    redirect_authenticated_user = True
+    authentication_form = UserAuthenticationForm

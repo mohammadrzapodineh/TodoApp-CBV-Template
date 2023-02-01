@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import CustomUserManager
 
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='email', unique=True)
     date_joined = models.DateTimeField(auto_now_add=True)
@@ -14,6 +15,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
+
+    class Meta:
+        ordering = ('first_name',)
 
     def __str__(self):
         return f'User:{self.first_name}'

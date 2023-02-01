@@ -84,6 +84,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 # Auth User Model And AUTHENTICATE backends
 AUTH_USER_MODEL = 'accounts.CustomUser'
+LOGIN_REDIRECT_URL = 'Todo:index_page'
+LOGIN_URL = 'accounts:login_page'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
