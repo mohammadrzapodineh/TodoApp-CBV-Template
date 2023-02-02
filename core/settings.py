@@ -20,7 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
-    'Todo.apps.TodoConfig'
+    'Todo.apps.TodoConfig',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -86,7 +87,9 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'Todo:index_page'
 LOGIN_URL = 'accounts:login_page'
-
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.UserEmailBackedn'
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

@@ -9,7 +9,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=110, verbose_name='first name')
     last_name = models.CharField(max_length=110, verbose_name='last name')
     is_staff = models.BooleanField(verbose_name='is staff?', default=False)
-    is_active = models.BooleanField(verbose_name='is active?', default=False)
+    is_active = models.BooleanField(verbose_name='is active?', default=True)
     is_superuser = models.BooleanField(verbose_name='is superuser?', default=False)
 
     USERNAME_FIELD = 'email'
