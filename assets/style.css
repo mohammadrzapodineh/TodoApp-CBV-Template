@@ -57,10 +57,9 @@ body{
   font-size: 21px;
   outline: none;
   background: #8E49E8;
-  cursor: pointer;
+
   border-radius: 3px;
   opacity: 0.6;
-  pointer-events: none;
   transition: all 0.3s ease;
 }
 .inputField button:hover,

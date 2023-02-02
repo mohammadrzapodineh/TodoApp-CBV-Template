@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import IndexPage
+from .views import TodoCreateView
 
 app_name = 'Todo'
 urlpatterns = [
-    path('', IndexPage.as_view(), name='index_page')
+    path('', TodoCreateView.as_view(), name='index_page')
 ]
