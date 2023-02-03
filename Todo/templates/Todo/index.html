@@ -27,21 +27,36 @@
   
    
     <ul class="todoList">
-     {% for todo in ojbect_list %}
+      <p class="text-warning">Pending Todos</p>
+     {% for todo in pending_todo_list %}
      <li>{{ todo.title }}
       <hr>
       <a href="{% url 'Todo:delete_todo' todo.id %}"><small class="btn btn-danger">Delete</small></a>
       <a href="{% url 'Todo:edit_todo' todo.id %}"><small class="btn btn-primary">Edit</small></a>
       <small class="btn btn-warning">Status:{% if todo.is_done %}Done{% else %}Pending{% endif %}</small>
 
-      
+      {% empty %}
+      <li class="text-danger">You Have'nt Any Todo in Pending Mode</li>
      </li>
      {% endfor %}
-     
+    <hr>
+    <p class="text-primary">Complate Todos</p>
+    {% for todo in doned_todos %}
+    <li>{{ todo.title }}
+     <hr>
+     <a href="{% url 'Todo:delete_todo' todo.id %}"><small class="btn btn-danger">Delete</small></a>
+     <a href="{% url 'Todo:edit_todo' todo.id %}"><small class="btn btn-primary">Edit</small></a>
+     <small class="btn btn-warning">Status:{% if todo.is_done %}Done{% else %}Pending{% endif %}</small>
+
+     {% empty %}
+     <li class="text-danger">You Have'nt Any Todo in Done Mode</li>
+    </li>
+    </li>
+    {% endfor %}
     </ul>
     <div class="footer">
-      <span>You have <span class="pendingTasks"></span> pending tasks</span>
-      <button>Clear All</button>
+      <span>You have <span class="pendingTasks"></span> pending tasks: {{ pending_todo_list.all.count }}</span>
+  
     </div>
   </div>
 

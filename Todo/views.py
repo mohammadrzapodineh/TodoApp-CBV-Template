@@ -22,7 +22,9 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
         '''
         Show Todo lists In Todo Index Html With TodoCreateForm
         '''
-        context['ojbect_list'] = Todo.objects.filter(user=self.request.user)
+        context['doned_todos'] = Todo.objects.get_done_todos_by_user(user=self.request.user) 
+        context['pending_todo_list'] = Todo.objects.get_pending_todos_by_user(user=self.request.user)
+        
         return context
 
 
@@ -40,6 +42,8 @@ class EditTodoViwe(LoginRequiredMixin, UpdateView):
         if todo.user == self.request.user:
             return super().get_object()
         raise PermissionDenied
+
+
 class DeleteTodoView(LoginRequiredMixin, DeleteView):
     model = Todo
     template_name_suffix = '_delete'
