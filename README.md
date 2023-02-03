@@ -3,13 +3,12 @@
 
 # How To user
 ```
-Clone Project: git clone https://github.com/mohammadrzapodineh/TodoApp-CBV-Template.git
-At First You Must Create A Virtualenv For Project
-python -m venv venv
-cd venv 
-cd Scripts
-activate.bat
-pip install -r requiremnts.txt
-python manage.py runserver
+1. git clone https://github.com/mohammadrzapodineh/TodoApp-CBV-Template.git
+2. python -m venv venv
+3. cd venv 
+4. cd Scripts
+5. activate.bat
+6. pip install -r requiremnts.txt
+7. python manage.py runserver
 ```
 
