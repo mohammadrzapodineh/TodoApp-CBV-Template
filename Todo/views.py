@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import TodoCreateForm
 from .models import Todo
 
+
 class TodoCreateView(LoginRequiredMixin, CreateView):
     template_name = 'Todo/index.html'
     form_class = TodoCreateForm
@@ -17,6 +18,9 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
     
     def get_context_data(self):
         context = super().get_context_data()
+        '''
+        Show Todo lists In Todo Index Html With TodoCreateForm
+        '''
         context['ojbect_list'] = Todo.objects.filter(user=self.request.user)
         print(context['ojbect_list'])
         return context
