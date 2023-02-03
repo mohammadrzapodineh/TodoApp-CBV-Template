@@ -6,7 +6,13 @@ class TodoCreateForm(forms.ModelForm):
 
     class Meta:
         model = Todo
-        fields = ('title',)
+        fields = ('title', 'is_done')
         validators = {
-            'title': MaxLengthValidator(110, message='Title Max Lenght= 110')
+            'title': MaxLengthValidator(110, message='Title Max Lenght= 110'),
+            
         }
+        labels = {
+            'is_done': 'Status'
+        }
+
+
