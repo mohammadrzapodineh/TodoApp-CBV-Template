@@ -9,7 +9,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include('Todo.urls')),
     path('accounts/', include('accounts.urls')),
-    path('', IdexTemplateView.as_view(), name='home_page')
+    path('', IdexTemplateView.as_view(), name='home_page'),
+    path('api/', include('api.urls'))
 ]
 
 if settings.DEBUG:
