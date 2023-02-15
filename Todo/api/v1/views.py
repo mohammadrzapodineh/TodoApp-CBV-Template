@@ -18,8 +18,15 @@ def todo_list(request):
         serializer.save()
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
-@api_view()
+
+@api_view(['GET', 'PUT'])
 def todo_detail(request, pk):
     todo_object = get_object_or_404(Todo, id=pk)
-    serializer = TodoSerializer(todo_object)
-    return Response(data=serializer.data, status=status.HTTP_200_OK)
+    if request.method == 'GET': 
+        serializer = TodoSerializer(todo_object)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'PUT':
+        serializer = TodoSerializer(todo_object, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)

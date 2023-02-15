@@ -24,7 +24,7 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
         '''
         context['doned_todos'] = Todo.objects.get_done_todos_by_user(user=self.request.user) 
         context['pending_todo_list'] = Todo.objects.get_pending_todos_by_user(user=self.request.user)
-        
+
         return context
 
 
