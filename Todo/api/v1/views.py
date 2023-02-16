@@ -19,7 +19,7 @@ def todo_list(request):
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET', 'PUT'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def todo_detail(request, pk):
     todo_object = get_object_or_404(Todo, id=pk)
     if request.method == 'GET': 
@@ -30,3 +30,12 @@ def todo_detail(request, pk):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'DELETE':
+        response = {
+            'detail': 'todo object Is Deleted Successfully',
+            'id': todo_object.id ,
+            'title': todo_object.title,
+            'user': todo_object.user.id
+        }
+        todo_object.delete()
+        return Response(response, status=status.HTTP_204_NO_CONTENT)
