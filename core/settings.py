@@ -111,3 +111,11 @@ STATICFILES_DIRS = [
     BASE_DIR / 'assets'
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# # Django RestFrameWork Settings
+# REST_FRAMEWORD = {
+#      'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ]
+# }

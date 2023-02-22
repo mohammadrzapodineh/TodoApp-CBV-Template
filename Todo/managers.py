@@ -16,3 +16,11 @@ class TodoManager(Manager):
         '''
         object_list = self.get_queryset().filter(is_done=False, user=user)
         return object_list
+    
+
+    def get_all_todo_by_user(self, user):
+        '''
+        This Method Will Return List Of Todo for user 
+        '''
+        object_list = self.get_queryset().filter(user=user)
+        return object_list

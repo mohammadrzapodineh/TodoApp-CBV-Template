@@ -10,7 +10,8 @@ urlpatterns = [
     path('todo/', include('Todo.urls')),
     path('accounts/', include('accounts.urls')),
     path('', IdexTemplateView.as_view(), name='home_page'),
-    path('api/', include('api.urls'))
+    path('api/', include('api.urls')),
+    path('api-auth/', include('rest_framework.urls'))
 ]
 
 if settings.DEBUG:

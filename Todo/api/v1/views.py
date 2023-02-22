@@ -1,5 +1,6 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from Todo.api.serializer import TodoSerializer
 from Todo.models import Todo
 from django.shortcuts import get_object_or_404
@@ -7,12 +8,15 @@ from rest_framework import status
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def todo_list(request):
     if request.method == 'GET':
-        object_list = Todo.objects.all()
-        serializer = TodoSerializer(object_list, many=True) 
+        print(request.user)
+        todo_list = Todo.objects.get_all_todo_by_user(user=request.user)
+        serializer = TodoSerializer(todo_list, many=True) 
         return Response(data=serializer.data)
     elif request.method == 'POST':
+        print(request.data)
         serializer = TodoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
