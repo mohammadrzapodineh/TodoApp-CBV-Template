@@ -56,6 +56,11 @@
     </ul>
     <div class="footer">
       <span>You have <span class="pendingTasks"></span> pending tasks: {{ pending_todo_list.all.count }}</span>
+      <a href="{% url 'accounts:log-out' %}">
+        <button class="btn-danger text-center">
+          Log-out
+        </button>
+      </a>
   
     </div>
   </div>

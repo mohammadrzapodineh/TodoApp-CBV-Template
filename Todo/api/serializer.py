@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from Todo.models import Todo
-
+from rest_framework.exceptions import PermissionDenied
 
 
 # class TodoSerializer(serializers.Serializer):
@@ -19,3 +19,4 @@ class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = ('title', 'is_done', 'user', 'id')
+
